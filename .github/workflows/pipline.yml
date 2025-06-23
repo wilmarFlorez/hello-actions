@@ -25,6 +25,8 @@ jobs:
           npm cache clean --force
           rm -f package-lock.json
           npm install --no-audit --no-fund
+      - name: Run tests
+        run: npm test
       - name: Lint code
         run: npm run eslint
       - name: Build project
