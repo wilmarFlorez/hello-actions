@@ -1,8 +1,11 @@
+import ColorHistory from './colorHistory.js';
+
 class RandomCardGenerator {
   constructor() {
     this.container = document.getElementById('cardsContainer');
     this.generateBtn = document.getElementById('generateBtn');
     this.colors = [];
+    this.colorHistory = new ColorHistory();
     this.quotes = [
       'Sé el cambio que quieres ver',
       'La vida es bella',
@@ -40,6 +43,20 @@ class RandomCardGenerator {
     const backgroundColor = this.getRandomColor();
     card.style.backgroundColor = backgroundColor;
     card.textContent = this.getRandomQuote();
+
+    // Add color code display
+    const colorCode = document.createElement('div');
+    colorCode.className = 'color-code-display';
+    colorCode.textContent = backgroundColor;
+    colorCode.title = 'Click para copiar';
+    colorCode.addEventListener('click', () => {
+      navigator.clipboard.writeText(backgroundColor);
+      this.showCopyFeedback(colorCode);
+    });
+    card.appendChild(colorCode);
+
+    // Add to color history
+    this.colorHistory.addColor(backgroundColor);
         
     // Añadir al principio del contenedor
     this.container.insertBefore(card, this.container.firstChild);
@@ -48,6 +65,17 @@ class RandomCardGenerator {
     if (this.container.children.length > 12) {
       this.container.removeChild(this.container.lastChild);
     }
+  }
+
+  showCopyFeedback(element) {
+    const originalText = element.textContent;
+    element.textContent = '¡Copiado!';
+    element.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
+
+    setTimeout(() => {
+      element.textContent = originalText;
+      element.style.backgroundColor = '';
+    }, 1500);
   }
 }
 

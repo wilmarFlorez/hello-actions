@@ -4,7 +4,7 @@ describe('Card Generation', () => {
   beforeEach(() => {
     document.body.innerHTML = '';
     mockContainer = document.createElement('div');
-    mockContainer.id = 'card-container';
+    mockContainer.id = 'card-containe';
     document.body.appendChild(mockContainer);
   });
 
