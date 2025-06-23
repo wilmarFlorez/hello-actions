@@ -1,3 +1,5 @@
+[![Deploy Pipline](https://github.com/wilmarFlorez/hello-actions/actions/workflows/pipline.yml/badge.svg)](https://github.com/wilmarFlorez/hello-actions/actions/workflows/pipline.yml)
+
 # Random Color Cards
 
 A web application that generates random color cards dynamically.
