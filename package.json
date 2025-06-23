@@ -6,13 +6,22 @@
   "scripts": {
     "start": "npx http-server .",
     "dev": "npx live-server .",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "echo \"No tests specified\" && exit 0",
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "eslint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
-  "keywords": ["frontend", "colors", "random", "javascript"],
+  "keywords": [
+    "frontend",
+    "colors",
+    "random",
+    "javascript"
+  ],
   "author": "Tu nombre",
   "license": "MIT",
   "devDependencies": {
     "http-server": "^14.1.1",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "eslint": "^8.57.0",
+    "@eslint/js": "^9.0.0"
   }
 }
