@@ -9,19 +9,25 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - name: Cone repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           sparse-checkout: .
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-         node-version: 18
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund --no-optional
-      - name: Linter code
+         node-version: 22.15.0
+      - name: Install system dependencies for build
+        run: sudo apt-get update && sudo apt-get install -y build-essential
+      - name: Clean install Node.js dependencies
+        run: |
+          rm -rf node_modules
+          npm cache clean --force
+          rm -f package-lock.json
+          npm install --no-audit --no-fund --no-optional
+      - name: Lint code
         run: npm run eslint
-      - name: Build
+      - name: Build project
         run: npm run build
         
         
