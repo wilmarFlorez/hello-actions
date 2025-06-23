@@ -18,7 +18,7 @@ jobs:
         with:
          node-version: 18
       - name: Install dependencies
-        run: npm istall
+        run: npm install
       - name: Linter code
         run: npm run eslint
         
