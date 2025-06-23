@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-         node-version: 22.15.0
+          node-version: 22.15.0
       - name: Install system dependencies for build
         run: sudo apt-get update && sudo apt-get install -y build-essential
       - name: Clean install Node.js dependencies
@@ -27,6 +27,16 @@ jobs:
         run: npm run eslint
       - name: Build project
         run: npm run build
-        
-        
-
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+      - name: Wait for Render Deployment
+        uses: bounceapp/render-action@0.12.0
+        with:
+          render-token: ${{ secrets.RENDER_API_KEY }}
+          service-id: ${{secrets.RENDER_SERVICE_ID}}
+          retries: 20
+          wait: 16000
+          sleep: 30000
