@@ -61,6 +61,7 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     transition: transform 0.3s ease;
     animation: fadeIn 0.5s ease;
+    position: relative;
 }
 
 .card:hover {
@@ -75,5 +76,232 @@ h1 {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Color History Panel */
+.color-history-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    max-height: 80vh;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.history-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+}
+
+.history-header h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.history-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.format-selector {
+    flex: 1;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    font-size: 12px;
+}
+
+.export-btn, .clear-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.export-btn {
+    background: #28a745;
+    color: white;
+}
+
+.export-btn:hover {
+    background: #218838;
+}
+
+.clear-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.clear-btn:hover {
+    background: #c82333;
+}
+
+.search-container {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #667eea;
+}
+
+.history-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.history-item:hover {
+    background-color: #f8f9fa;
+}
+
+.color-preview {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-info {
+    flex: 1;
+}
+
+.color-code {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.color-code:hover {
+    background-color: #e9ecef;
+}
+
+.color-time {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: #e9ecef;
+}
+
+.no-history {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Color code display on cards */
+.color-code-display {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.color-code-display:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Copy feedback */
+.copy-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    z-index: 10000;
+    animation: feedbackPulse 2s ease;
+}
+
+@keyframes feedbackPulse {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
+/* Card positioning for color code */
+.card {
+    position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .color-history-panel {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        order: 2;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .cards-container {
+        order: 1;
     }
 }

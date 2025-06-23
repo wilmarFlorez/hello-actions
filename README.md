@@ -13,6 +13,10 @@ This project is a frontend application that allows you to generate cards with ra
 - Random color generation
 - Intuitive and responsive web interface
 - Card-based color visualization
+- **Color history tracking with persistent storage**
+- **Copy color codes to clipboard in multiple formats (HEX, RGB, HSL)**
+- **Color search and filter functionality**
+- **Color palette export as CSS variables**
 - Clean and well-structured code
 
 ## 🛠️ Technologies
@@ -65,6 +69,25 @@ To automatically fix linting errors:
 
 ```bash
 npm run eslint:fix
+```
+
+### New Features
+
+#### Color History & Management
+- **Automatic History**: All generated colors are automatically saved to your history
+- **Multiple Formats**: View and copy colors in HEX, RGB, or HSL format
+- **One-Click Copy**: Click any color code to copy it to your clipboard
+- **Search & Filter**: Find specific colors using the search functionality
+- **Export Palette**: Export your color history as CSS custom properties
+
+#### Usage Examples
+```css
+/* Generated CSS variables from your color history */
+:root {
+  --color-primary: #ff6b6b;
+  --color-secondary: #4ecdc4;
+  --color-accent: #45b7d1;
+}
 ```
 
 ## 🤝 Contributing
