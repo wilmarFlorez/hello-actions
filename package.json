@@ -1,0 +1,18 @@
+{
+  "name": "random-color-cards",
+  "version": "1.0.0",
+  "description": "Una aplicación web que genera tarjetas de colores aleatorios",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server .",
+    "dev": "npx live-server .",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["frontend", "colors", "random", "javascript"],
+  "author": "Tu nombre",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  }
+}
