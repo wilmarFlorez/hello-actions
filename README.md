@@ -30,7 +30,7 @@ This project is a frontend application that allows you to generate cards with ra
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
+git clone <git@github.com:wilmarFlorez/hello-actions.git>
 cd hello-actions
 ```
 
